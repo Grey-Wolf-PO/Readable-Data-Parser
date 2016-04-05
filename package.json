@@ -1,7 +1,7 @@
 {
-  "name": "fileparser",
+  "name": "readablefileparser",
   "version": "1.0.0",
-  "description": "See GitHub repo",
+  "description": "See GitHub repository README.md",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
