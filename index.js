@@ -32,9 +32,9 @@ exports.parse = parse = function(myString) {
                 var key = lines[i].split(", ")[0]
                 var value = lines[i].split(", ")[1]
                 if (value.indexOf("list: ") === 0) {
-                    value = value.replace("list: ", "").replace(/ and /g, ", ")
+                    value = value.replace("list: ", "").replace(/ and /g, ", ").replace(/\~([^< ](?:[^<]*?[^< ])?)\~/g, '[$1]')
+                    value = JSON.parse(value)
                 }
-                value = JSON.parse(value)
                 obj[key] = value
             }
             else {
@@ -46,7 +46,7 @@ exports.parse = parse = function(myString) {
                 var value = line.split(", ")[1]
                 if (value.indexOf("list: ") === 0) {
                     value = value.replace("list: ", "").replace(/ and /g, ", ").replace(/\~([^< ](?:[^<]*?[^< ])?)\~/g, '[$1]')
-                    value = JSON.parse(value)
+                    console.log(value)
                 }
                 bigKey = bigKey.replace(/\[/g, "").replace(/\]/g, "")
                 if (bigKey.split(", ").length === 1) {
@@ -77,7 +77,7 @@ exports.parse = parse = function(myString) {
                         eval(string + " = " + value)
                     }
                     else {
-                        if (!(value === "true" || value === "false") && isNaN(value)) {
+                        if (!(value === "true" || value === "false") && isNaN(value) && value.indexOf("[") !== 0) {
                             eval(string + " = " + "\"" + value + "\"")
                         }
                         else {
