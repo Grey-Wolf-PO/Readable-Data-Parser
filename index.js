@@ -27,7 +27,10 @@ exports.parse = parse = function(myString) {
             var lines = myString.split("\n")
         }
         else {
-            var lines = myString.split("\r")
+            if (myString.indexOf("\r") > -1 && myString.indexOf("\n") === -1) var lines = myString.split("\r")
+            else {
+                var lines = myString.split("\r\n")
+            }
         }
         // Start off by making the cheif object, obj, not undefined
         var obj = {}
