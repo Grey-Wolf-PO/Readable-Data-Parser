@@ -56,7 +56,6 @@ exports.parse = parse = function(myString) {
                 // Check if value should be array
                 if (value.indexOf("list: ") === 0) {
                     value = value.replace("list: ", "").replace(/ and /g, ", ").replace(/\~([^< ](?:[^<]*?[^< ])?)\~/g, '[$1]')
-                    console.log(value)
                 }
                 bigKey = bigKey.replace(/\[/g, "").replace(/\]/g, "")
                 // If there is only one specification for category
