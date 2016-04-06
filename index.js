@@ -1,3 +1,8 @@
+// Only function
+
+
+// For debugging, place console.log(variableYouSuspectHere) in random parts of code
+
 exports.parse = parse = function(myString) {
     // Check if myString is JSON
     if (myString.indexOf("{") === 0) {
@@ -23,15 +28,8 @@ exports.parse = parse = function(myString) {
         }
         var fs = require("fs")
         // Split document into array based on lines
-        if (myString.indexOf("\n") > -1 && myString.indexOf("\r") === -1) {
-            var lines = myString.split("\n")
-        }
-        else {
-            if (myString.indexOf("\r") > -1 && myString.indexOf("\n") === -1) var lines = myString.split("\r")
-            else {
-                var lines = myString.split("\r\n")
-            }
-        }
+        myString = myString.replace(/\r/g, "")
+        var lines = myString.split("\n")
         // Start off by making the cheif object, obj, not undefined
         var obj = {}
         for (var i = 0; i < lines.length; i++) {
@@ -117,7 +115,6 @@ EXAMPLE USAGE: PARSING TEXT.TXT
 ###############################
 
 var fs = require("fs")
-parse(fs.readFileSync("./text.txt", 'utf8'), function(obj) {
-    console.log(JSON.stringify(obj))
-})
+var fs = require("fs")
+console.log(JSON.strinify(parse(fs.readFileSync("./text.txt", 'utf8'))))
 */
