@@ -115,6 +115,5 @@ EXAMPLE USAGE: PARSING TEXT.TXT
 ###############################
 
 var fs = require("fs")
-var fs = require("fs")
-console.log(JSON.strinify(parse(fs.readFileSync("./text.txt", 'utf8'))))
+console.log(JSON.stringify(parse(fs.readFileSync("./text.txt", 'utf8'))))
 */
